@@ -4,7 +4,7 @@ import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 import React from 'react';
 // Uncommenting DrawControl import would enable Polygon selection
 // feature and render it in Chrome but won't render in IE11.
-// import DrawControl from 'react-mapbox-gl-draw';
+import DrawControl from 'react-mapbox-gl-draw';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 
 import PropTypes from 'prop-types';
@@ -215,23 +215,23 @@ class MapFacetContents extends React.Component<MapFacetContentsDefaultProps, Map
       const width = this.props.size && this.props.size.width ? this.props.size.width : 400;
 
       // style filters
-      // const selected = ['==', 'active', 'true'];
-      // const deselected = ['==', 'active', 'false'];
-      // const polygon = ['==', '$type', 'Polygon'];
-      // const line = ['==', '$type', 'LineString'];
+      const selected = ['==', 'active', 'true'];
+      const deselected = ['==', 'active', 'false'];
+      const polygon = ['==', '$type', 'Polygon'];
+      const line = ['==', '$type', 'LineString'];
 
       // styles
-      // const selectedColor = '#f9c448';
-      // const deselectedColor = '#3276b1';
-      // const lineLayout = {
-      //   'line-cap': 'round',
-      //   'line-join': 'round',
-      // };
-      // const selectedLinePaint = {
-      //   'line-color': selectedColor,
-      //   'line-dasharray': [0.2, 2],
-      //   'line-width': 2,
-      // };
+      const selectedColor = '#f9c448';
+      const deselectedColor = '#3276b1';
+      const lineLayout = {
+        'line-cap': 'round',
+        'line-join': 'round',
+      };
+      const selectedLinePaint = {
+        'line-color': selectedColor,
+        'line-dasharray': [0.2, 2],
+        'line-width': 2,
+      };
 
       return (
         <div>
@@ -272,7 +272,7 @@ class MapFacetContents extends React.Component<MapFacetContentsDefaultProps, Map
             <ZoomControl position="bottom-right" />
             {/* DrawControl has no ES5 support yet, hence we won't use it until we have a fix for this.
                 Uncommenting below code would enable Polygon selection feature and render it in Chrome but won't render in IE11. */}
-            {/* <DrawControl
+            <DrawControl
               controls={{
                 point: false,
                 line_string: false,
@@ -329,7 +329,7 @@ class MapFacetContents extends React.Component<MapFacetContentsDefaultProps, Map
                   'line-width': 3,
                 },
               }]}
-            /> */}
+            />
             {points}
           </Map>
         </div>
